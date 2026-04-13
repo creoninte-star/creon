@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { useEffect } from "react";
 import { renderCanvas } from "@/components/ui/canvas";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import Image from "next/image";
 
 export default function Hero() {
   useEffect(() => {
@@ -43,67 +41,59 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-background">
-
-
-      <div className="relative z-10 w-full">
-        <ContainerScroll titleComponent={<></>}>
-          <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
-            {/* Cinematic Video Background Inside the Tilted Card */}
-            <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                className="object-cover w-full h-full mix-blend-screen"
-              >
-                <source src="https://cdn.pixabay.com/video/2019/11/04/28741-371887461_large.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-background/80"></div>
-            </div>
-
-            <motion.div 
-              className="flex flex-col items-center text-center relative z-10 p-6"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.h1 
-                variants={itemVariants}
-                className="text-7xl md:text-[8rem] lg:text-[10rem] font-inter font-bold tracking-tighter text-gold leading-none mb-6"
-              >
-                CREON
-              </motion.h1>
-              
-              <motion.p 
-                variants={itemVariants}
-                className="text-lg md:text-xl text-text max-w-2xl font-inter tracking-wide font-light mb-12 uppercase"
-              >
-                CREativity ONset. Born Creative. Built to Scale.
-              </motion.p>
-
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-6 justify-center"
-                variants={itemVariants}
-              >
-                <LiquidButton
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="px-10 py-5 w-auto"
-                >
-                  <span className="font-inter font-semibold tracking-widest uppercase text-sm text-gold">Work With Us</span>
-                </LiquidButton>
-                <LiquidButton
-                  onClick={(e) => handleNavClick(e as any, '#store')}
-                  className="px-10 py-5 w-auto"
-                >
-                  <span className="font-inter font-semibold tracking-widest uppercase text-sm text-text">Visit Store</span>
-                </LiquidButton>
-              </motion.div>
-            </motion.div>
-          </div>
-        </ContainerScroll>
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+      {/* Cinematic Video Background */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="object-cover w-full h-full mix-blend-screen"
+        >
+          <source src="https://cdn.pixabay.com/video/2019/11/04/28741-371887461_large.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-background/80"></div>
       </div>
+
+      <motion.div 
+        className="flex flex-col items-center text-center relative z-10 px-6 container mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1 
+          variants={itemVariants}
+          className="text-7xl md:text-[8rem] lg:text-[10rem] font-inter font-bold tracking-tighter text-gold leading-none mb-6"
+        >
+          CREON
+        </motion.h1>
+        
+        <motion.p 
+          variants={itemVariants}
+          className="text-lg md:text-xl text-text max-w-2xl font-inter tracking-wide font-light mb-12 uppercase"
+        >
+          CREativity ONset. Born Creative. Built to Scale.
+        </motion.p>
+
+        <motion.div 
+          className="flex flex-col sm:flex-row gap-6 justify-center"
+          variants={itemVariants}
+        >
+          <LiquidButton
+            onClick={(e) => handleNavClick(e as any, '#services')}
+            className="px-10 py-5 w-auto"
+          >
+            <span className="font-inter font-semibold tracking-widest uppercase text-sm text-gold">Work With Us</span>
+          </LiquidButton>
+          <LiquidButton
+            onClick={(e) => handleNavClick(e as any, '#store')}
+            className="px-10 py-5 w-auto"
+          >
+            <span className="font-inter font-semibold tracking-widest uppercase text-sm text-text">Visit Store</span>
+          </LiquidButton>
+        </motion.div>
+      </motion.div>
 
       <canvas
         className="pointer-events-none fixed inset-0 w-full h-full z-50"
