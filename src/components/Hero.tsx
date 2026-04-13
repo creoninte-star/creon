@@ -3,12 +3,8 @@
 import { motion } from "framer-motion";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { useEffect } from "react";
-import { renderCanvas } from "@/components/ui/canvas";
 
 export default function Hero() {
-  useEffect(() => {
-    renderCanvas();
-  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -95,10 +91,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <canvas
-        className="pointer-events-none fixed inset-0 w-full h-full z-50"
-        id="canvas"
-      ></canvas>
     </section>
   );
 }
