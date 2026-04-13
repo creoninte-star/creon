@@ -69,17 +69,18 @@ export default function Services() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            {/* Mobile Header / Close Bar */}
-            <div className="sticky top-0 right-0 p-6 flex justify-end z-[1000] pointer-events-none">
+            {/* Fixed Header / Close Button */}
+            <div className="absolute top-8 md:top-12 right-8 md:right-12 z-[1001]">
               <button 
                 onClick={() => setSelectedService(null)}
-                className="pointer-events-auto p-4 bg-white/5 hover:bg-gold/20 text-white hover:text-gold transition-all duration-300 rounded-full border border-white/10"
+                className="group flex items-center gap-3 p-3 px-4 bg-white/5 hover:bg-gold/20 text-white hover:text-gold transition-all duration-300 rounded-full border border-white/10 backdrop-blur-md"
               >
-                <X size={28} />
+                <span className="text-[10px] font-inter font-bold uppercase tracking-[0.2em] opacity-60 group-hover:opacity-100 transition-opacity hidden sm:block">Close</span>
+                <X size={20} />
               </button>
             </div>
             
-            <div className="flex-1 flex flex-col lg:flex-row items-center justify-center p-8 lg:p-24 -mt-12">
+            <div className="flex-1 flex flex-col items-center p-8 lg:p-24 overflow-y-auto">
               <div className="w-full max-w-4xl flex flex-col lg:flex-row gap-12 lg:gap-24">
                 <div className="flex-1">
                   <motion.div 
