@@ -44,10 +44,10 @@ export default function Process() {
                       transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
                     ></motion.div>
                     <motion.div 
-                      className="md:hidden absolute left-1/2 top-48 w-[2px] h-32 bg-gold origin-top -translate-x-1/2"
+                      className="md:hidden absolute left-1/2 top-16 w-[2px] h-[calc(100%+4rem)] bg-gold origin-top -translate-x-1/2"
                       initial={{ scaleY: 0 }}
                       whileInView={{ scaleY: 1 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
                     ></motion.div>
                   </>

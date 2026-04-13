@@ -34,8 +34,13 @@ export default function Services() {
                 onClick={() => setSelectedService(service.id)}
                 className="relative bg-white/[0.02] backdrop-blur-lg cursor-pointer border border-white/[0.05] rounded-3xl px-8 py-12 flex flex-col justify-between group hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-500 overflow-hidden shadow-2xl"
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  borderColor: typeof window !== "undefined" && window.innerWidth < 768 ? "rgba(212, 175, 55, 0.4)" : "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: typeof window !== "undefined" && window.innerWidth < 768 ? "rgba(255, 255, 255, 0.06)" : "rgba(255, 255, 255, 0.02)"
+                }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ scale: 1.02, y: -5 }}
               >
@@ -58,44 +63,70 @@ export default function Services() {
       <AnimatePresence>
         {selectedService && (
           <motion.div
-            className="fixed inset-0 z-[100] bg-background flex flex-col"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[999] bg-background/95 backdrop-blur-2xl flex flex-col overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            <div className="absolute top-8 right-8 z-[110]">
+            {/* Mobile Header / Close Bar */}
+            <div className="sticky top-0 right-0 p-6 flex justify-end z-[1000] pointer-events-none">
               <button 
                 onClick={() => setSelectedService(null)}
-                className="p-4 text-text hover:text-gold transition-colors bg-secondary rounded-none"
+                className="pointer-events-auto p-4 bg-white/5 hover:bg-gold/20 text-white hover:text-gold transition-all duration-300 rounded-full border border-white/10"
               >
-                <X size={24} />
+                <X size={28} />
               </button>
             </div>
             
-            <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-1 p-12 lg:p-24 flex flex-col justify-center">
-                <div className="text-gold mb-8">
-                  {activeService && <activeService.icon size={64} className="stroke-1" />}
+            <div className="flex-1 flex flex-col lg:flex-row items-center justify-center p-8 lg:p-24 -mt-12">
+              <div className="w-full max-w-4xl flex flex-col lg:flex-row gap-12 lg:gap-24">
+                <div className="flex-1">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-gold mb-8"
+                  >
+                    {activeService && <activeService.icon size={64} className="stroke-1" />}
+                  </motion.div>
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-5xl md:text-7xl font-inter font-bold tracking-tighter text-text mb-8 uppercase"
+                  >
+                    {activeService?.title}
+                  </motion.h2>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-lg md:text-xl text-text-muted font-inter max-w-xl leading-relaxed mb-12"
+                  >
+                    {activeService?.desc} Our agency bridges the gap between raw potential and market dominance through elite creative strategies and cutting-edge implementation.
+                  </motion.p>
+                  <motion.button 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    onClick={() => setSelectedService(null)}
+                    className="inline-flex items-center gap-2 uppercase tracking-widest text-xs font-bold font-inter text-gold border-b border-gold pb-1 hover:text-white hover:border-white transition-all duration-300"
+                  >
+                    Close & Return to Services
+                  </motion.button>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-inter font-bold tracking-tighter text-text mb-6 uppercase">
-                  {activeService?.title}
-                </h2>
-                <p className="text-xl text-text-muted font-inter max-w-xl leading-relaxed mb-12">
-                  {activeService?.desc} Our work speaks for itself, combining high-end luxury aesthetics with powerful functional outcomes.
-                </p>
-                <button 
-                  onClick={() => setSelectedService(null)}
-                  className="self-start uppercase tracking-widest text-sm font-inter text-gold border-b-2 border-gold pb-1 hover:text-text hover:border-text transition-colors"
+
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex-1 bg-white/[0.03] border border-white/10 p-1 rounded-3xl relative overflow-hidden hidden md:block min-h-[400px]"
                 >
-                  Close Modal
-                </button>
-              </div>
-              <div className="flex-1 bg-secondary relative overflow-hidden hidden lg:block">
-                {/* Placeholder Image for work example */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-luminosity"></div>
-                <div className="absolute inset-0 bg-background/30"></div>
-                <div className="absolute bottom-12 left-12 text-sm text-gold tracking-widest uppercase font-inter">Featured Work Examples</div>
+                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-luminosity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+                  <div className="absolute bottom-8 left-8 text-[10px] text-gold tracking-[0.4em] uppercase font-inter">Featured Work / Case Study</div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
