@@ -132,13 +132,13 @@ export default function HeroShaderBackground({
       const h = canvas.height;
       const D = Math.max(w, h);
 
-      // Mouse/touch nudge (tiny influence)
-      const interactX = enableDesktopInteractivity && !mobile
-        ? (mouseX.current - 0.5) * 0.085
-        : mobile ? (mouseX.current - 0.5) * 0.035 : 0;
-      const interactY = enableDesktopInteractivity && !mobile
-        ? (mouseY.current - 0.5) * 0.065
-        : mobile ? (mouseY.current - 0.5) * 0.025 : 0;
+      // Mouse/touch nudge (increased influence for visibility)
+      const interactX = enableDesktopInteractivity
+        ? (mouseX.current - 0.5) * (mobile ? 0.08 : 0.22)
+        : 0;
+      const interactY = enableDesktopInteractivity
+        ? (mouseY.current - 0.5) * (mobile ? 0.06 : 0.18)
+        : 0;
 
       // Clear to matte black
       ctx.clearRect(0, 0, w, h);
@@ -187,10 +187,10 @@ export default function HeroShaderBackground({
     const onResize = () => resize();
     window.addEventListener("resize", onResize, { passive: true });
 
-    if (!mobile && enableDesktopInteractivity) {
+    if (enableDesktopInteractivity) {
       window.addEventListener("mousemove", onMouseMove, { passive: true });
     }
-    // Touch follow on mobile (both phone and tablet)
+    // Touch follow on mobile/tablet
     window.addEventListener("touchmove", onTouchMove, { passive: true });
 
     return () => {
