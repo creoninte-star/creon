@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import LuxurySpotlight from "@/components/ui/luxury-spotlight";
+import HeroShaderBackground from "@/components/ui/hero-shader-background";
 
 export default function Hero() {
 
@@ -47,10 +47,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero-grain relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
 
-      {/* ── Premium luxury spotlight shader ── */}
-      <LuxurySpotlight />
+      {/* ── Premium hybrid shader background ── */}
+      <HeroShaderBackground animationSpeed={1.0} enableDesktopInteractivity={true} />
 
       {/* ── Subtle horizontal light streak at center ── */}
       <div
