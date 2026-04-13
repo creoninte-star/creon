@@ -15,7 +15,7 @@ export default function Store() {
     <section id="store" className="py-32 bg-background border-t border-secondary">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20 text-center">
-          <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase">CREON Supply</h2>
+          <h2 className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6 uppercase">CREON Supply</h2>
           <div className="w-16 h-[2px] bg-gold mx-auto"></div>
           <p className="text-xl text-text-muted font-inter mt-8 uppercase tracking-widest text-sm">Curated Essentials</p>
         </div>
