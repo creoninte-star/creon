@@ -84,7 +84,7 @@ export default function Hero() {
         <div className="overflow-hidden mb-6">
           <motion.h1
             variants={word}
-            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-inter font-bold tracking-[-0.04em] leading-none"
+            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-display font-black tracking-[-0.01em] leading-none"
             style={{
               background:
                 "linear-gradient(160deg, #F5E6A0 0%, #D4AF37 40%, #A07C18 75%, #6B5010 100%)",

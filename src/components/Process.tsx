@@ -14,7 +14,7 @@ export default function Process() {
     <section id="process" className="py-32 bg-background overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20 text-center">
-          <h2 className="text-5xl md:text-7xl font-inter font-bold tracking-tighter text-text mb-6 uppercase">Our Process</h2>
+          <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase">Our Process</h2>
           <div className="w-16 h-[2px] bg-gold mx-auto"></div>
         </div>
 
@@ -59,7 +59,7 @@ export default function Process() {
                   <span className="text-white/90 group-hover:text-gold text-4xl md:text-5xl font-inter font-light tracking-widest transition-colors duration-500 relative z-10">{step.num}</span>
                 </div>
 
-                <h3 className="text-2xl font-inter font-bold mb-4 uppercase text-white tracking-widest group-hover:text-gold transition-colors duration-500">{step.title}</h3>
+                <h3 className="text-2xl font-display font-black mb-4 uppercase text-white tracking-wide group-hover:text-gold transition-colors duration-500">{step.title}</h3>
                 <p className="text-white/70 group-hover:text-white/95 font-inter text-sm md:text-base max-w-[16rem] mx-auto text-left md:text-center leading-relaxed transition-colors duration-500">
                   {step.desc}
                 </p>

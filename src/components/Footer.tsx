@@ -33,7 +33,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
           <div className="mb-12 md:mb-0">
-            <h2 className="text-6xl md:text-8xl font-inter font-bold tracking-tighter text-text mb-6">
+            <h2 className="text-6xl md:text-8xl font-display font-black tracking-tight text-text mb-6">
               LET'S <span className="text-gold">TALK.</span>
             </h2>
             <a href="mailto:hello@creon.agency" className="text-xl md:text-2xl font-inter text-text-muted hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-2 flex items-center gap-2 w-max">

@@ -21,6 +21,8 @@ const config: Config = {
       fontFamily: {
         inter: ["var(--font-inter)"],
         space: ["var(--font-space-grotesk)"],
+        bebas: ["var(--font-bebas)", "sans-serif"],
+        display: ["var(--font-big-shoulders)", "sans-serif"],
       },
     },
   },
