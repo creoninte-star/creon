@@ -81,31 +81,31 @@ export default function HeroShaderBackground({
         freqX: 0.00058, freqY: 0.00044,
         baseX: 0.50,  baseY: 0.36,
         rangeX: 0.075, rangeY: 0.055,
-        r: 212, g: 172, b: 55, alpha: 0.088, radius: 0.70,
+        r: 212, g: 172, b: 55, alpha: 0.22, radius: 0.75,
       },
       // 1 — Muted amber, lower-left secondary
       {
         phaseX: 2.1,  phaseY: 1.5,
         freqX: 0.00042, freqY: 0.00067,
-        baseX: 0.22,  baseY: 0.65,
+        baseX: 0.18,  baseY: 0.70,
         rangeX: 0.10,  rangeY: 0.075,
-        r: 186, g: 138, b: 38, alpha: 0.044, radius: 0.52,
+        r: 186, g: 138, b: 38, alpha: 0.13, radius: 0.60,
       },
       // 2 — Champagne/cream accent, upper-right
       {
         phaseX: 4.2,  phaseY: 3.1,
         freqX: 0.00051, freqY: 0.00039,
-        baseX: 0.76,  baseY: 0.28,
+        baseX: 0.80,  baseY: 0.25,
         rangeX: 0.08,  rangeY: 0.06,
-        r: 238, g: 218, b: 158, alpha: 0.022, radius: 0.42,
+        r: 238, g: 218, b: 158, alpha: 0.09, radius: 0.50,
       },
       // 3 — Deep teal, lower-right for shadow depth richness
       {
         phaseX: 1.3,  phaseY: 3.5,
         freqX: 0.00034, freqY: 0.00049,
-        baseX: 0.84,  baseY: 0.78,
+        baseX: 0.88,  baseY: 0.80,
         rangeX: 0.065, rangeY: 0.05,
-        r: 12,  g: 70,  b: 86,  alpha: 0.042, radius: 0.46,
+        r: 12,  g: 70,  b: 86,  alpha: 0.11, radius: 0.52,
       },
     ];
 
@@ -157,8 +157,9 @@ export default function HeroShaderBackground({
 
         const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
         grd.addColorStop(0,    `rgba(${s.r},${s.g},${s.b},${s.alpha})`);
-        grd.addColorStop(0.28, `rgba(${s.r},${s.g},${s.b},${s.alpha * 0.46})`);
-        grd.addColorStop(0.60, `rgba(${s.r},${s.g},${s.b},${s.alpha * 0.12})`);
+        grd.addColorStop(0.20, `rgba(${s.r},${s.g},${s.b},${s.alpha * 0.55})`);
+        grd.addColorStop(0.50, `rgba(${s.r},${s.g},${s.b},${s.alpha * 0.18})`);
+        grd.addColorStop(0.80, `rgba(${s.r},${s.g},${s.b},${s.alpha * 0.04})`);
         grd.addColorStop(1,    `rgba(${s.r},${s.g},${s.b},0)`);
 
         ctx.fillStyle = grd;
