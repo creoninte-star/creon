@@ -81,7 +81,7 @@ export default function HeroShaderBackground({
         freqX: 0.00058, freqY: 0.00044,
         baseX: 0.50,  baseY: 0.36,
         rangeX: 0.075, rangeY: 0.055,
-        r: 212, g: 172, b: 55, alpha: 0.22, radius: 0.75,
+        r: 212, g: 172, b: 55, alpha: 0.45, radius: 0.85,
       },
       // 1 — Muted amber, lower-left secondary
       {
@@ -89,7 +89,7 @@ export default function HeroShaderBackground({
         freqX: 0.00042, freqY: 0.00067,
         baseX: 0.18,  baseY: 0.70,
         rangeX: 0.10,  rangeY: 0.075,
-        r: 186, g: 138, b: 38, alpha: 0.13, radius: 0.60,
+        r: 186, g: 138, b: 38, alpha: 0.28, radius: 0.70,
       },
       // 2 — Champagne/cream accent, upper-right
       {
@@ -97,7 +97,7 @@ export default function HeroShaderBackground({
         freqX: 0.00051, freqY: 0.00039,
         baseX: 0.80,  baseY: 0.25,
         rangeX: 0.08,  rangeY: 0.06,
-        r: 238, g: 218, b: 158, alpha: 0.09, radius: 0.50,
+        r: 238, g: 218, b: 158, alpha: 0.20, radius: 0.60,
       },
       // 3 — Deep teal, lower-right for shadow depth richness
       {
@@ -105,7 +105,7 @@ export default function HeroShaderBackground({
         freqX: 0.00034, freqY: 0.00049,
         baseX: 0.88,  baseY: 0.80,
         rangeX: 0.065, rangeY: 0.05,
-        r: 12,  g: 70,  b: 86,  alpha: 0.11, radius: 0.52,
+        r: 12,  g: 70,  b: 86,  alpha: 0.25, radius: 0.65,
       },
     ];
 
@@ -132,12 +132,12 @@ export default function HeroShaderBackground({
       const h = canvas.height;
       const D = Math.max(w, h);
 
-      // Mouse/touch nudge (increased influence for visibility)
+      // Mouse/touch nudge (DRASTICALLY increased influence for visibility)
       const interactX = enableDesktopInteractivity
-        ? (mouseX.current - 0.5) * (mobile ? 0.08 : 0.22)
+        ? (mouseX.current - 0.5) * (mobile ? 0.15 : 0.45)
         : 0;
       const interactY = enableDesktopInteractivity
-        ? (mouseY.current - 0.5) * (mobile ? 0.06 : 0.18)
+        ? (mouseY.current - 0.5) * (mobile ? 0.12 : 0.35)
         : 0;
 
       // Clear to matte black
