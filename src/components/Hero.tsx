@@ -44,26 +44,27 @@ export default function Hero() {
 
   return (
     <section className="relative w-full overflow-hidden bg-background">
-      {/* Subtle Cinematic Video Background Placeholder - using a deeply dark overlay to keep it matte */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="object-cover w-full h-full mix-blend-screen"
-        >
-          {/* Placeholder luxury cinematic particle/smoke video */}
-          <source src="https://cdn.pixabay.com/video/2019/11/04/28741-371887461_large.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-background/80"></div>
-      </div>
+
 
       <div className="relative z-10 w-full">
-        <ContainerScroll
-          titleComponent={
+        <ContainerScroll titleComponent={<></>}>
+          <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
+            {/* Cinematic Video Background Inside the Tilted Card */}
+            <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="object-cover w-full h-full mix-blend-screen"
+              >
+                <source src="https://cdn.pixabay.com/video/2019/11/04/28741-371887461_large.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-background/80"></div>
+            </div>
+
             <motion.div 
-              className="flex flex-col items-center text-center pb-20 mt-10 md:mt-20"
+              className="flex flex-col items-center text-center relative z-10 p-6"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -100,16 +101,7 @@ export default function Hero() {
                 </LiquidButton>
               </motion.div>
             </motion.div>
-          }
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=3840"
-            alt="hero luxury showcase"
-            height={720}
-            width={1400}
-            className="mx-auto rounded-2xl object-cover h-full object-center opacity-80 mix-blend-luminosity"
-            draggable={false}
-          />
+          </div>
         </ContainerScroll>
       </div>
 
