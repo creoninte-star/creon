@@ -36,7 +36,7 @@ export default function Footer() {
             <h2 className="text-6xl md:text-8xl font-inter font-bold tracking-tighter text-text mb-6">
               LET'S <span className="text-gold">TALK.</span>
             </h2>
-            <a href="mailto:hello@creon.agency" className="text-xl md:text-2xl font-inter text-text-muted hover:text-teal transition-colors border-b border-transparent hover:border-teal pb-2 flex items-center gap-2 w-max">
+            <a href="mailto:hello@creon.agency" className="text-xl md:text-2xl font-inter text-text-muted hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-2 flex items-center gap-2 w-max">
               hello@creon.agency <ArrowUpRight size={24} />
             </a>
           </div>
@@ -45,8 +45,8 @@ export default function Footer() {
               <motion.a 
                 key={i} 
                 href="#" 
-                className="w-14 h-14 rounded-full border border-secondary flex items-center justify-center text-text hover:border-gold hover:text-gold transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="w-14 h-14 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-text/70 hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all duration-300"
+                whileHover={{ scale: 1.08, y: -3 }}
                 aria-label={icon.name}
               >
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
