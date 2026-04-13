@@ -1,0 +1,103 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { PenTool, Code, Video, Palette, Megaphone, X } from "lucide-react";
+
+const services = [
+  { id: "brand", title: "Brand Identity", desc: "Crafting unforgettable brand stories.", icon: PenTool },
+  { id: "web", title: "Web Developer", desc: "Building scalable digital experiences.", icon: Code },
+  { id: "video", title: "Video Editing", desc: "Action-driven visual narratives.", icon: Video },
+  { id: "design", title: "Graphic Design", desc: "Aesthetics that demand attention.", icon: Palette },
+  { id: "social", title: "Ad & Social Branding", desc: "Thumb-stopping social content.", icon: Megaphone },
+];
+
+export default function Services() {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
+  const activeService = services.find(s => s.id === selectedService);
+
+  return (
+    <section id="services" className="py-32 bg-background relative z-10">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="mb-20">
+          <h2 className="text-5xl md:text-7xl font-inter font-bold tracking-tighter text-text mb-6">Services</h2>
+          <div className="w-16 h-[2px] bg-gold"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, i) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.id}
+                onClick={() => setSelectedService(service.id)}
+                className="bg-secondary p-10 cursor-pointer border px-8 py-12 flex flex-col justify-between group border-transparent hover:border-teal transition-colors duration-500"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-text group-hover:text-gold transition-colors duration-300 mb-12">
+                  <Icon size={40} className="stroke-[1.5]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-inter font-medium tracking-wide text-text mb-4 uppercase">{service.title}</h3>
+                  <p className="text-text-muted font-inter text-sm leading-relaxed">{service.desc}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            className="fixed inset-0 z-[100] bg-background flex flex-col"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="absolute top-8 right-8 z-[110]">
+              <button 
+                onClick={() => setSelectedService(null)}
+                className="p-4 text-text hover:text-gold transition-colors bg-secondary rounded-none"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-1 p-12 lg:p-24 flex flex-col justify-center">
+                <div className="text-gold mb-8">
+                  {activeService && <activeService.icon size={64} className="stroke-1" />}
+                </div>
+                <h2 className="text-5xl md:text-7xl font-inter font-bold tracking-tighter text-text mb-6 uppercase">
+                  {activeService?.title}
+                </h2>
+                <p className="text-xl text-text-muted font-inter max-w-xl leading-relaxed mb-12">
+                  {activeService?.desc} Our work speaks for itself, combining high-end luxury aesthetics with powerful functional outcomes.
+                </p>
+                <button 
+                  onClick={() => setSelectedService(null)}
+                  className="self-start uppercase tracking-widest text-sm font-inter text-gold border-b-2 border-gold pb-1 hover:text-text hover:border-text transition-colors"
+                >
+                  Close Modal
+                </button>
+              </div>
+              <div className="flex-1 bg-secondary relative overflow-hidden hidden lg:block">
+                {/* Placeholder Image for work example */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-luminosity"></div>
+                <div className="absolute inset-0 bg-background/30"></div>
+                <div className="absolute bottom-12 left-12 text-sm text-gold tracking-widest uppercase font-inter">Featured Work Examples</div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
