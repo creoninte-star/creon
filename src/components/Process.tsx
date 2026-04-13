@@ -19,8 +19,9 @@ export default function Process() {
         </div>
 
         <div className="relative mt-24">
-          {/* Main timeline line */}
+          {/* Main timeline line (Horizontal on Desktop, Vertical on Mobile) */}
           <div className="hidden md:block absolute top-[4.5rem] left-0 w-full h-[1px] bg-secondary"></div>
+          <div className="md:hidden absolute left-1/2 top-16 bottom-16 w-[2px] bg-secondary -translate-x-1/2"></div>
           
           <div className="flex flex-col md:flex-row justify-between relative z-10">
             {steps.map((step, i) => (
@@ -32,15 +33,24 @@ export default function Process() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Connector overlay line animation */}
+                {/* Connector overlay line animation (Horizontal on Desktop, Vertical on Mobile) */}
                 {i < steps.length - 1 && (
-                  <motion.div 
-                    className="hidden md:block absolute top-[4.5rem] left-1/2 w-full h-[1px] bg-gold origin-left"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
-                  ></motion.div>
+                  <>
+                    <motion.div 
+                      className="hidden md:block absolute top-[4.5rem] left-1/2 w-full h-[1px] bg-gold origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
+                    ></motion.div>
+                    <motion.div 
+                      className="md:hidden absolute left-1/2 top-48 w-[2px] h-32 bg-gold origin-top -translate-x-1/2"
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
+                    ></motion.div>
+                  </>
                 )}
 
                 {/* Premium Glass Circle */}

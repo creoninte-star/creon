@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import HeroShaderBackground from "@/components/ui/hero-shader-background";
 
 export default function Hero() {
@@ -105,30 +106,32 @@ export default function Hero() {
           CREativity ONset. Born Creative. Built to Scale.
         </motion.p>
 
-        {/* CTAs — editorial matte style */}
+        {/* CTAs — Premium Liquid Glass style */}
         <motion.div
           variants={fade}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-8 justify-center mt-10"
         >
-          {/* Primary — matte gold border */}
-          <button
-            onClick={(e) => handleNavClick(e, "#services")}
-            className="group relative inline-flex items-center gap-3 px-10 py-4 text-xs font-inter font-semibold tracking-[0.25em] uppercase text-gold border border-gold/40 hover:border-gold/80 hover:bg-gold/5 transition-all duration-500"
+          {/* Primary — Liquid Glass Gold */}
+          <LiquidButton
+            onClick={(e) => handleNavClick(e as any, "#services")}
+            className="px-12 py-5"
           >
-            Work With Us
-            <ArrowRight
-              size={14}
-              className="opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
-            />
-          </button>
+            <div className="flex items-center gap-3">
+              <span className="font-inter font-bold tracking-[0.2em] uppercase text-sm text-gold">Work With Us</span>
+              <ArrowRight
+                size={16}
+                className="text-gold opacity-70 group-hover:translate-x-1 transition-transform"
+              />
+            </div>
+          </LiquidButton>
 
-          {/* Secondary — matte white/ghost */}
-          <button
-            onClick={(e) => handleNavClick(e, "#store")}
-            className="group inline-flex items-center gap-3 px-10 py-4 text-xs font-inter font-semibold tracking-[0.25em] uppercase text-white/40 border border-white/10 hover:border-white/25 hover:text-white/70 transition-all duration-500"
+          {/* Secondary — Liquid Glass Silver/White */}
+          <LiquidButton
+            onClick={(e) => handleNavClick(e as any, "#store")}
+            className="px-12 py-5"
           >
-            Visit Store
-          </button>
+            <span className="font-inter font-bold tracking-[0.2em] uppercase text-sm text-white/80">Visit Store</span>
+          </LiquidButton>
         </motion.div>
       </motion.div>
 

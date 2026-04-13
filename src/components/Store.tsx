@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 const storeItems = [
   { id: 1, name: "The Executive Timepiece", price: "$495", category: "Watches", img: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80", col: "md:col-span-2 md:row-span-2 h-[500px]" },
@@ -55,9 +56,9 @@ export default function Store() {
         </div>
         
         <div className="mt-16 flex justify-center">
-            <button className="px-10 py-4 bg-transparent border border-white/20 text-white font-inter font-semibold tracking-widest uppercase text-sm cursor-pointer hover:bg-gold hover:border-gold hover:text-background transition-all duration-300 rounded-full">
-                View All Products
-            </button>
+            <LiquidButton className="px-12 py-5">
+                <span className="font-inter font-bold tracking-[0.2em] uppercase text-sm text-white/90">View All Products</span>
+            </LiquidButton>
         </div>
       </div>
     </section>
