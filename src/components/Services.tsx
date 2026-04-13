@@ -32,19 +32,22 @@ export default function Services() {
               <motion.div
                 key={service.id}
                 onClick={() => setSelectedService(service.id)}
-                className="bg-secondary p-10 cursor-pointer border px-8 py-12 flex flex-col justify-between group border-transparent hover:border-teal transition-colors duration-500"
+                className="relative bg-white/[0.02] backdrop-blur-lg cursor-pointer border border-white/[0.05] rounded-3xl px-8 py-12 flex flex-col justify-between group hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-500 overflow-hidden shadow-2xl"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                <div className="text-text group-hover:text-gold transition-colors duration-300 mb-12">
-                  <Icon size={40} className="stroke-[1.5]" />
+                {/* Premium subtle inner gradient glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                <div className="text-text/70 group-hover:text-gold transition-colors duration-500 mb-12 relative z-10">
+                  <Icon size={44} strokeWidth={1.5} />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-inter font-medium tracking-wide text-text mb-4 uppercase">{service.title}</h3>
-                  <p className="text-text-muted font-inter text-sm leading-relaxed">{service.desc}</p>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-inter font-medium tracking-wide text-text mb-4 uppercase group-hover:translate-x-1 transition-transform duration-300">{service.title}</h3>
+                  <p className="text-text-muted font-inter text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300">{service.desc}</p>
                 </div>
               </motion.div>
             );
