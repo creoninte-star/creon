@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
-import HeroShaderBackground from "@/components/ui/hero-shader-background";
+import AnimatedShaderBackground from "@/components/ui/animated-shader-hero";
 
 export default function Hero() {
 
@@ -48,10 +48,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
 
-      {/* ── Premium hybrid shader background ── */}
-      <HeroShaderBackground animationSpeed={1.0} enableDesktopInteractivity={true} />
+      {/* ── WebGL nebula shader background ── */}
+      <AnimatedShaderBackground />
 
       {/* ── Subtle horizontal light streak at center ── */}
       <div
