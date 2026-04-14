@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const projects = [
   { id: 1, title: "Nexus Rebrand", category: "Brand Identity", img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80", height: "md:col-span-2 md:row-span-2 h-[400px] md:h-[600px]" },
@@ -10,6 +10,15 @@ const projects = [
   { id: 5, title: "Echo Festival", category: "Brand Identity", img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80", height: "md:col-span-2 md:row-span-1 h-[350px]" },
   { id: 6, title: "CREON Supply: Kicks", category: "E-Commerce", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80", height: "md:col-span-1 md:row-span-1 h-[350px]" },
 ];
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }
+  })
+};
 
 export default function Work() {
   return (
@@ -31,10 +40,11 @@ export default function Work() {
             <motion.div 
               key={project.id} 
               className={`relative overflow-hidden group cursor-pointer rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-gold/30 transition-all duration-500 shadow-2xl ${project.height}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
               whileHover={{ scale: 1.02 }}
             >
               {/* Image Base */}

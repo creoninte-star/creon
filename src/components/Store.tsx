@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 const storeItems = [
@@ -9,6 +9,15 @@ const storeItems = [
   { id: 3, name: "Matte Horizon", price: "$650", category: "Watches", img: "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=80", col: "md:col-span-1 md:row-span-1 h-[240px]" },
   { id: 4, name: "Midnight Runners", price: "$180", category: "Shoes", img: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&q=80", col: "md:col-span-2 md:row-span-1 h-[240px]" },
 ];
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const }
+  })
+};
 
 export default function Store() {
   return (
@@ -25,10 +34,11 @@ export default function Store() {
             <motion.div 
               key={item.id}
               className={`group relative overflow-hidden bg-white/[0.02] border border-white/[0.06] hover:border-gold/30 transition-all duration-500 cursor-pointer flex flex-col justify-end rounded-2xl shadow-2xl ${item.col}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              custom={i}
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
               whileHover={{ scale: 1.02 }}
             >
               <div 

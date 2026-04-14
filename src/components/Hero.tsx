@@ -1,12 +1,38 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-hero";
 
-export default function Hero() {
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.18, delayChildren: 0.6 },
+  },
+};
 
+const wordVariants: Variants = {
+  hidden: { y: 60, opacity: 0, rotateX: -15 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    rotateX: 0,
+    transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] as const },
+  },
+};
+
+const fadeVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const },
+  },
+};
+
+export default function Hero() {
   const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
     e.preventDefault();
     const lenis = (window as any).lenis;
@@ -18,33 +44,6 @@ export default function Hero() {
       duration: 1.0,
       easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -8 * t)),
     });
-  };
-
-  const container: import("framer-motion").Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.18, delayChildren: 0.6 },
-    },
-  };
-
-  const word: import("framer-motion").Variants = {
-    hidden: { y: 60, opacity: 0, rotateX: -15 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      rotateX: 0,
-      transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] as const },
-    },
-  };
-
-  const fade: import("framer-motion").Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const },
-    },
   };
 
   return (
@@ -67,13 +66,13 @@ export default function Hero() {
       {/* ── Hero content ── */}
       <motion.div
         className="relative z-10 flex flex-col items-center text-center px-6 container mx-auto"
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
         animate="visible"
         style={{ perspective: "1200px" }}
       >
         {/* Premium Eyebrow Badge */}
-        <motion.div variants={fade} className="mb-10">
+        <motion.div variants={fadeVariants} className="mb-10">
           <div className="relative group/badge inline-block">
             {/* Soft outer glow */}
             <div className="absolute inset-0 rounded-full bg-gold/5 blur-[8px] opacity-0 group-hover/badge:opacity-100 transition-opacity duration-700" />
@@ -96,8 +95,8 @@ export default function Hero() {
         {/* CREON wordmark */}
         <div className="overflow-hidden mb-6">
           <motion.h1
-            variants={word}
-            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-display font-black tracking-[-0.01em] leading-none"
+            variants={wordVariants}
+            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-gondens font-black tracking-[-0.01em] leading-none"
             style={{
               background:
                 "linear-gradient(160deg, #F5E6A0 0%, #D4AF37 40%, #A07C18 75%, #6B5010 100%)",
@@ -113,7 +112,7 @@ export default function Hero() {
 
         {/* Tagline */}
         <motion.p
-          variants={fade}
+          variants={fadeVariants}
           className="text-sm md:text-base text-white/50 max-w-lg font-sans tracking-[0.18em] font-light mb-14 uppercase"
         >
           CREativity ONset. Born Creative. Built to Scale.
@@ -121,7 +120,7 @@ export default function Hero() {
 
         {/* CTAs — Premium Liquid Glass style */}
         <motion.div
-          variants={fade}
+          variants={fadeVariants}
           className="flex flex-col sm:flex-row gap-8 justify-center mt-10"
         >
           {/* Primary — Liquid Glass Gold */}

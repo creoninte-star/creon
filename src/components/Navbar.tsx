@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,23 @@ const navLinks = [
   { name: "Work", href: "#work" },
   { name: "Store", href: "#store" },
 ];
+
+const navVariants: Variants = {
+  hidden: { y: -100 },
+  visible: { 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+  }
+};
+
+const mobileMenuVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 0.5, ease: "easeInOut" as const }
+  },
+  exit: { opacity: 0 }
+};
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,9 +65,9 @@ export default function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-colors duration-500",
           isScrolled ? "bg-background py-4 border-b border-secondary" : "bg-transparent py-8"
         )}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        variants={navVariants}
+        initial="hidden"
+        animate="visible"
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/" className="text-xl font-sans font-bold tracking-widest text-gold uppercase">
@@ -86,10 +103,10 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center gap-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" as const }}
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
             {navLinks.map((link, i) => (
               <motion.div

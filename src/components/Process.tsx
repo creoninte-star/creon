@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const steps = [
   { num: "01", title: "Discover", desc: "Understanding your brand, audience, and goals deeply." },
@@ -9,64 +9,64 @@ const steps = [
   { num: "04", title: "Launch", desc: "Going live and optimizing for growth and scale." },
 ];
 
+const circleVariants: Variants = {
+  hidden: { 
+    borderColor: "rgba(255, 255, 255, 0.1)",
+    boxShadow: "0 0 0px rgba(212, 175, 55, 0)",
+    y: 20,
+    opacity: 0
+  },
+  visible: (i: number) => ({
+    borderColor: "rgba(212, 175, 55, 0.5)",
+    boxShadow: "0 0 30px rgba(212, 175, 55, 0.2)",
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
+      opacity: { duration: 0.6, delay: i * 0.1 },
+      borderColor: { delay: i * 1.2, duration: 0.5 },
+      boxShadow: { delay: i * 1.2, duration: 0.5 },
+    }
+  })
+};
+
+const numVariants: Variants = {
+  hidden: { color: "rgba(255, 255, 255, 0.9)" },
+  visible: (i: number) => ({
+    color: "rgba(212, 175, 55, 1)",
+    transition: {
+      delay: i * 1.2,
+      duration: 0.5
+    }
+  })
+};
+
+const lineVariants: Variants = {
+  hidden: { scaleX: 0, scaleY: 0 },
+  visible: (i: number) => ({
+    scaleX: 1,
+    scaleY: 1,
+    transition: {
+      delay: i * 1.2 + 0.4,
+      duration: 0.8,
+      ease: "easeInOut" as const
+    }
+  })
+};
+
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 1.2 + 0.2,
+      duration: 0.6
+    }
+  })
+};
+
 export default function Process() {
-  const circleVariants = {
-    hidden: { 
-      borderColor: "rgba(255, 255, 255, 0.1)",
-      boxShadow: "0 0 0px rgba(212, 175, 55, 0)",
-      y: 20,
-      opacity: 0
-    },
-    visible: (i: number) => ({
-      borderColor: "rgba(212, 175, 55, 0.5)",
-      boxShadow: "0 0 30px rgba(212, 175, 55, 0.2)",
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
-        opacity: { duration: 0.6, delay: i * 0.1 },
-        borderColor: { delay: i * 1.2, duration: 0.5 },
-        boxShadow: { delay: i * 1.2, duration: 0.5 },
-      }
-    })
-  };
-
-  const numVariants = {
-    hidden: { color: "rgba(255, 255, 255, 0.9)" },
-    visible: (i: number) => ({
-      color: "rgba(212, 175, 55, 1)",
-      transition: {
-        delay: i * 1.2,
-        duration: 0.5
-      }
-    })
-  };
-
-  const lineVariants = {
-    hidden: { scaleX: 0, scaleY: 0 },
-    visible: (i: number) => ({
-      scaleX: 1,
-      scaleY: 1,
-      transition: {
-        delay: i * 1.2 + 0.4,
-        duration: 0.8,
-        ease: "easeInOut" as const
-      }
-    })
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 1.2 + 0.2,
-        duration: 0.6
-      }
-    })
-  };
-
   return (
     <section id="process" className="py-32 bg-background overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { PenTool, Code, Video, Palette, Megaphone, X } from "lucide-react";
 
 const services = [
@@ -11,6 +11,21 @@ const services = [
   { id: "design", title: "Graphic Design", desc: "Aesthetics that demand attention.", icon: Palette },
   { id: "social", title: "Ad & Social Branding", desc: "Thumb-stopping social content.", icon: Megaphone },
 ];
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }
+  })
+};
+
+const modalVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.4 } },
+  exit: { opacity: 0 }
+};
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -31,17 +46,13 @@ export default function Services() {
             return (
               <motion.div
                 key={service.id}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
                 onClick={() => setSelectedService(service.id)}
                 className="relative bg-white/[0.02] backdrop-blur-lg cursor-pointer border border-white/[0.05] rounded-3xl px-8 py-12 flex flex-col justify-between group hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-500 overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0,
-                  borderColor: typeof window !== "undefined" && window.innerWidth < 768 ? "rgba(212, 175, 55, 0.4)" : "rgba(255, 255, 255, 0.05)",
-                  backgroundColor: typeof window !== "undefined" && window.innerWidth < 768 ? "rgba(255, 255, 255, 0.06)" : "rgba(255, 255, 255, 0.02)"
-                }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
                 whileHover={{ scale: 1.02, y: -5 }}
               >
                 {/* Premium subtle inner gradient glow */}
