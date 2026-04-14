@@ -24,15 +24,35 @@ export default function Work() {
   return (
     <section id="work" className="py-32 bg-secondary">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <motion.div
+          className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+        >
           <div>
-            <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase">Selected Work</h2>
-            <div className="w-16 h-[2px] bg-gold"></div>
+            <div className="overflow-hidden">
+              <motion.h2
+                variants={{ hidden: { y: "100%", opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const } } }}
+                className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase"
+              >
+                Selected Work
+              </motion.h2>
+            </div>
+            <motion.div
+              variants={{ hidden: { width: 0 }, visible: { width: 64, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } } }}
+              className="h-[2px] bg-gold"
+            />
           </div>
-          <a href="#" className="uppercase tracking-[0.2em] text-sm font-sans text-gold hover:text-teal transition-colors border-b border-gold hover:border-teal pb-1">
+          <motion.a
+            variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } }}
+            href="#"
+            className="uppercase tracking-[0.2em] text-sm font-sans text-gold hover:text-teal transition-colors border-b border-gold hover:border-teal pb-1"
+          >
             View Archive
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
         {/* CSS Grid Masonry approximation */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[minmax(0,1fr)]">

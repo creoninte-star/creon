@@ -32,14 +32,29 @@ export default function Footer() {
     <footer className="bg-background pt-32 pb-12 border-t border-secondary relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
-          <div className="mb-12 md:mb-0">
-            <h2 className="text-6xl md:text-8xl font-display font-black tracking-tight text-text mb-6">
-              LET'S <span className="text-gold">TALK.</span>
-            </h2>
-            <a href="mailto:hello@creon.agency" className="text-xl md:text-2xl font-sans text-text-muted hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-2 flex items-center gap-2 w-max">
+          <motion.div
+            className="mb-12 md:mb-0"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+          >
+            <div className="overflow-hidden">
+              <motion.h2
+                variants={{ hidden: { y: "100%", opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const } } }}
+                className="text-6xl md:text-8xl font-display font-black tracking-tight text-text mb-6"
+              >
+                LET'S <span className="text-gold">TALK.</span>
+              </motion.h2>
+            </div>
+            <motion.a
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}
+              href="mailto:hello@creon.agency"
+              className="text-xl md:text-2xl font-sans text-text-muted hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-2 flex items-center gap-2 w-max"
+            >
               hello@creon.agency <ArrowUpRight size={24} />
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
           <div className="flex gap-6">
             {socialIcons.map((icon, i) => (
               <motion.a 

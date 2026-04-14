@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Manrope, Epilogue, Space_Grotesk, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import ScrollProgress from "@/components/ui/scroll-progress";
+import PageTransition from "@/components/ui/page-transition";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 const epilogue = Epilogue({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], variable: "--font-epilogue" });
@@ -21,8 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${epilogue.variable} ${space.variable} ${bebas.variable}`}>
       <body className="antialiased overflow-x-hidden selection:bg-gold selection:text-background font-sans bg-background text-text">
+        <ScrollProgress />
         <SmoothScroll>
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </SmoothScroll>
       </body>
     </html>

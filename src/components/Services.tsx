@@ -29,16 +29,31 @@ const modalVariants: Variants = {
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
-
   const activeService = services.find(s => s.id === selectedService);
 
   return (
-    <section id="services" className="py-32 bg-background relative z-10">
+    <section id="services" className="py-32 bg-background relative z-10 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-20">
-          <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6">Services</h2>
-          <div className="w-16 h-[2px] bg-gold"></div>
-        </div>
+        <motion.div
+          className="mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <div className="overflow-hidden">
+            <motion.h2
+              variants={{ hidden: { y: "100%", opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const } } }}
+              className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6"
+            >
+              Services
+            </motion.h2>
+          </div>
+          <motion.div
+            variants={{ hidden: { width: 0 }, visible: { width: 64, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } } }}
+            className="h-[2px] bg-gold"
+          />
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => {

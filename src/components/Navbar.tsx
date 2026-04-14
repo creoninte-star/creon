@@ -33,13 +33,31 @@ const mobileMenuVariants: Variants = {
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("#services");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Track active section with IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ["#services", "#process", "#work"];
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.querySelector(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { threshold: 0.3 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -78,18 +96,33 @@ export default function Navbar() {
             CREON
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-xs font-sans uppercase tracking-[0.2em] text-text hover:text-teal transition-colors duration-300"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isExternal = link.href.startsWith("http");
+              const isActive = !isExternal && activeSection === link.href;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  onClick={isExternal ? undefined : (e) => handleNavClick(e, link.href)}
+                  className="relative text-xs font-sans uppercase tracking-[0.2em] transition-colors duration-300 group"
+                  style={{ color: isActive ? "#D4AF37" : undefined }}
+                >
+                  <span className={isActive ? "text-gold" : "text-text group-hover:text-gold transition-colors duration-300"}>
+                    {link.name}
+                  </span>
+                  {/* Active underline */}
+                  <motion.span
+                    className="absolute -bottom-1 left-0 h-[1px] bg-gold"
+                    initial={{ width: 0 }}
+                    animate={{ width: isActive ? "100%" : "0%" }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           {/* Mobile Toggle */}
