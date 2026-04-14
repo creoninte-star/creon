@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, Bebas_Neue, Big_Shoulders_Display } from "next/font/google";
+import { Manrope, Epilogue, Space_Grotesk, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
+const epilogue = Epilogue({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], variable: "--font-epilogue" });
 const space = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas" });
-const bigShoulders = Big_Shoulders_Display({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-big-shoulders" });
 
 export const metadata: Metadata = {
   title: "CREON | Born Creative. Built to Scale.",
@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${space.variable} ${bebas.variable} ${bigShoulders.variable}`}>
-      <body className="antialiased overflow-x-hidden selection:bg-gold selection:text-background font-inter bg-background text-text">
+    <html lang="en" className={`${manrope.variable} ${epilogue.variable} ${space.variable} ${bebas.variable}`}>
+      <body className="antialiased overflow-x-hidden selection:bg-gold selection:text-background font-sans bg-background text-text">
         <SmoothScroll>
           {children}
         </SmoothScroll>

@@ -53,7 +53,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="text-xl font-inter font-bold tracking-widest text-gold uppercase">
+          <Link href="/" className="text-xl font-sans font-bold tracking-widest text-gold uppercase">
             CREON
           </Link>
 
@@ -64,7 +64,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-xs font-inter uppercase tracking-[0.2em] text-text hover:text-teal transition-colors duration-300"
+                className="text-xs font-sans uppercase tracking-[0.2em] text-text hover:text-teal transition-colors duration-300"
               >
                 {link.name}
               </a>
@@ -101,7 +101,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-3xl font-inter font-light tracking-widest uppercase text-text hover:text-gold transition-colors"
+                  className="text-3xl font-sans font-light tracking-widest uppercase text-text hover:text-gold transition-colors"
                 >
                   {link.name}
                 </a>
@@ -113,3 +113,4 @@ export default function Navbar() {
     </>
   );
 }
+

@@ -80,7 +80,7 @@ export default function Hero() {
             
             <span className="relative inline-flex items-center gap-3 px-6 py-2.5 rounded-full 
               bg-white/[0.03] border border-white/10 backdrop-blur-xl
-              text-[9px] md:text-[10px] font-inter font-bold uppercase tracking-[0.45em] text-white/40
+              text-[9px] md:text-[10px] font-sans font-bold uppercase tracking-[0.45em] text-white/40
               shadow-[0_0_25px_rgba(0,0,0,0.3),inset_0_0_10px_rgba(255,255,255,0.02)]
               transition-all duration-500 group-hover/badge:text-gold/70 group-hover/badge:border-gold/20
               cursor-default">
@@ -97,7 +97,7 @@ export default function Hero() {
         <div className="overflow-hidden mb-6">
           <motion.h1
             variants={word}
-            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-gondens font-black tracking-[-0.01em] leading-none"
+            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-display font-black tracking-[-0.01em] leading-none"
             style={{
               background:
                 "linear-gradient(160deg, #F5E6A0 0%, #D4AF37 40%, #A07C18 75%, #6B5010 100%)",
@@ -114,7 +114,7 @@ export default function Hero() {
         {/* Tagline */}
         <motion.p
           variants={fade}
-          className="text-sm md:text-base text-white/50 max-w-lg font-inter tracking-[0.18em] font-light mb-14 uppercase"
+          className="text-sm md:text-base text-white/50 max-w-lg font-sans tracking-[0.18em] font-light mb-14 uppercase"
         >
           CREativity ONset. Born Creative. Built to Scale.
         </motion.p>
@@ -130,7 +130,7 @@ export default function Hero() {
             className="px-12 py-5"
           >
             <div className="flex items-center gap-3">
-              <span className="font-inter font-bold tracking-[0.2em] uppercase text-sm text-gold">Work With Us</span>
+              <span className="font-sans font-bold tracking-[0.2em] uppercase text-sm text-gold">Work With Us</span>
               <ArrowRight
                 size={16}
                 className="text-gold opacity-70 group-hover:translate-x-1 transition-transform"
@@ -143,7 +143,7 @@ export default function Hero() {
             onClick={(e) => handleNavClick(e as any, "#store")}
             className="px-12 py-5"
           >
-            <span className="font-inter font-bold tracking-[0.2em] uppercase text-sm text-white/80">Visit Store</span>
+            <span className="font-sans font-bold tracking-[0.2em] uppercase text-sm text-white/80">Visit Store</span>
           </LiquidButton>
         </motion.div>
       </motion.div>
@@ -160,7 +160,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <span className="text-[9px] font-inter tracking-[0.35em] uppercase text-white/20">Scroll</span>
+        <span className="text-[9px] font-sans tracking-[0.35em] uppercase text-white/20">Scroll</span>
         <motion.div
           className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent"
           animate={{ scaleY: [0, 1, 0], opacity: [0, 1, 0] }}
@@ -171,4 +171,5 @@ export default function Hero() {
     </section>
   );
 }
+
 

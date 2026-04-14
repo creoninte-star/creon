@@ -15,9 +15,9 @@ export default function Store() {
     <section id="store" className="py-32 bg-background border-t border-secondary">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20 text-center">
-          <h2 className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6 uppercase">CREON Supply</h2>
+          <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase">CREON Supply</h2>
           <div className="w-16 h-[2px] bg-gold mx-auto"></div>
-          <p className="text-xl text-text-muted font-inter mt-8 uppercase tracking-widest text-sm">Curated Essentials</p>
+          <p className="text-xl text-text-muted font-sans mt-8 uppercase tracking-widest text-sm">Curated Essentials</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[minmax(0,1fr)]">
@@ -42,14 +42,14 @@ export default function Store() {
               
                 <div className="relative z-10 p-8 flex justify-between items-end w-full">
                 <div>
-                  <div className="text-gold text-xs font-inter uppercase tracking-[0.2em] mb-2">{item.category}</div>
-                  <h3 className="text-2xl font-inter font-bold text-white uppercase tracking-tight">{item.name}</h3>
+                  <div className="text-gold text-xs font-sans uppercase tracking-[0.2em] mb-2">{item.category}</div>
+                  <h3 className="text-2xl font-sans font-bold text-white uppercase tracking-tight">{item.name}</h3>
                 </div>
-                <div className="text-gold font-inter font-bold tracking-widest text-xl">{item.price}</div>
+                <div className="text-gold font-sans font-bold tracking-widest text-xl">{item.price}</div>
               </div>
 
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                <span className="bg-gold text-background px-8 py-4 font-inter font-semibold uppercase tracking-widest text-xs rounded-full shadow-lg">Shop Now</span>
+                <span className="bg-gold text-background px-8 py-4 font-sans font-semibold uppercase tracking-widest text-xs rounded-full shadow-lg">Shop Now</span>
               </div>
             </motion.div>
           ))}
@@ -57,10 +57,11 @@ export default function Store() {
         
         <div className="mt-16 flex justify-center">
             <LiquidButton className="px-12 py-5">
-                <span className="font-inter font-bold tracking-[0.2em] uppercase text-sm text-white/90">View All Products</span>
+                <span className="font-sans font-bold tracking-[0.2em] uppercase text-sm text-white/90">View All Products</span>
             </LiquidButton>
         </div>
       </div>
     </section>
   );
 }
+

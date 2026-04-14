@@ -33,10 +33,10 @@ export default function Footer() {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
           <div className="mb-12 md:mb-0">
-            <h2 className="text-6xl md:text-8xl font-gondens font-black tracking-tight text-text mb-6">
+            <h2 className="text-6xl md:text-8xl font-display font-black tracking-tight text-text mb-6">
               LET'S <span className="text-gold">TALK.</span>
             </h2>
-            <a href="mailto:hello@creon.agency" className="text-xl md:text-2xl font-inter text-text-muted hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-2 flex items-center gap-2 w-max">
+            <a href="mailto:hello@creon.agency" className="text-xl md:text-2xl font-sans text-text-muted hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-2 flex items-center gap-2 w-max">
               hello@creon.agency <ArrowUpRight size={24} />
             </a>
           </div>
@@ -58,16 +58,16 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-secondary pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-text-muted text-sm font-inter uppercase tracking-widest">
+          <p className="text-text-muted text-sm font-sans uppercase tracking-widest">
             © 2026 CREON. All rights reserved.
           </p>
           <div className="flex gap-8">
-            <a href="#" className="text-text-muted hover:text-text text-sm font-inter uppercase tracking-widest transition-colors">Privacy</a>
-            <a href="#" className="text-text-muted hover:text-text text-sm font-inter uppercase tracking-widest transition-colors">Terms</a>
+            <a href="#" className="text-text-muted hover:text-text text-sm font-sans uppercase tracking-widest transition-colors">Privacy</a>
+            <a href="#" className="text-text-muted hover:text-text text-sm font-sans uppercase tracking-widest transition-colors">Terms</a>
           </div>
           <button 
             onClick={scrollToTop} 
-            className="text-gold text-sm font-inter uppercase tracking-widest hover:text-text transition-colors"
+            className="text-gold text-sm font-sans uppercase tracking-widest hover:text-text transition-colors"
           >
             Back to Top
           </button>
@@ -76,3 +76,4 @@ export default function Footer() {
     </footer>
   );
 }
+

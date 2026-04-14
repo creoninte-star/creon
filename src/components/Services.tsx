@@ -21,7 +21,7 @@ export default function Services() {
     <section id="services" className="py-32 bg-background relative z-10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20">
-          <h2 className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6">Services</h2>
+          <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6">Services</h2>
           <div className="w-16 h-[2px] bg-gold"></div>
         </div>
 
@@ -51,8 +51,8 @@ export default function Services() {
                   <Icon size={44} strokeWidth={1.5} />
                 </div>
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-inter font-medium tracking-wide text-text mb-4 uppercase group-hover:translate-x-1 transition-transform duration-300">{service.title}</h3>
-                  <p className="text-text-muted font-inter text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300">{service.desc}</p>
+                  <h3 className="text-2xl font-sans font-medium tracking-wide text-text mb-4 uppercase group-hover:translate-x-1 transition-transform duration-300">{service.title}</h3>
+                  <p className="text-text-muted font-sans text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300">{service.desc}</p>
                 </div>
               </motion.div>
             );
@@ -75,7 +75,7 @@ export default function Services() {
                 onClick={() => setSelectedService(null)}
                 className="group flex items-center gap-3 p-3 px-4 bg-white/5 hover:bg-gold/20 text-white hover:text-gold transition-all duration-300 rounded-full border border-white/10 backdrop-blur-md"
               >
-                <span className="text-[10px] font-inter font-bold uppercase tracking-[0.2em] opacity-60 group-hover:opacity-100 transition-opacity hidden sm:block">Close</span>
+                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] opacity-60 group-hover:opacity-100 transition-opacity hidden sm:block">Close</span>
                 <X size={20} />
               </button>
             </div>
@@ -95,7 +95,7 @@ export default function Services() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-8 uppercase"
+                    className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-8 uppercase"
                   >
                     {activeService?.title}
                   </motion.h2>
@@ -103,7 +103,7 @@ export default function Services() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-lg md:text-xl text-text-muted font-inter max-w-xl leading-relaxed mb-12"
+                    className="text-lg md:text-xl text-text-muted font-sans max-w-xl leading-relaxed mb-12"
                   >
                     {activeService?.desc} Our agency bridges the gap between raw potential and market dominance through elite creative strategies and cutting-edge implementation.
                   </motion.p>
@@ -112,7 +112,7 @@ export default function Services() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                     onClick={() => setSelectedService(null)}
-                    className="inline-flex items-center gap-2 uppercase tracking-widest text-xs font-bold font-inter text-gold border-b border-gold pb-1 hover:text-white hover:border-white transition-all duration-300"
+                    className="inline-flex items-center gap-2 uppercase tracking-widest text-xs font-bold font-sans text-gold border-b border-gold pb-1 hover:text-white hover:border-white transition-all duration-300"
                   >
                     Close & Return to Services
                   </motion.button>
@@ -126,7 +126,7 @@ export default function Services() {
                 >
                   <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-luminosity"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-                  <div className="absolute bottom-8 left-8 text-[10px] text-gold tracking-[0.4em] uppercase font-inter">Featured Work / Case Study</div>
+                  <div className="absolute bottom-8 left-8 text-[10px] text-gold tracking-[0.4em] uppercase font-sans">Featured Work / Case Study</div>
                 </motion.div>
               </div>
             </div>
@@ -136,3 +136,4 @@ export default function Services() {
     </section>
   );
 }
+

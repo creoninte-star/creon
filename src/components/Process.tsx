@@ -75,7 +75,7 @@ export default function Process() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6 uppercase"
+            className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase"
           >
             Our Process
           </motion.h2>
@@ -140,7 +140,7 @@ export default function Process() {
                   <h3 className="text-2xl font-bebas mb-4 uppercase text-white tracking-wider group-hover:text-gold transition-colors duration-500">
                     {step.title}
                   </h3>
-                  <p className="text-white/60 group-hover:text-white/90 font-inter text-sm md:text-base max-w-[16rem] mx-auto text-left md:text-center leading-relaxed transition-colors duration-500">
+                  <p className="text-white/60 group-hover:text-white/90 font-sans text-sm md:text-base max-w-[16rem] mx-auto text-left md:text-center leading-relaxed transition-colors duration-500">
                     {step.desc}
                   </p>
                 </motion.div>
@@ -152,4 +152,5 @@ export default function Process() {
     </section>
   );
 }
+
 

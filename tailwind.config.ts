@@ -19,10 +19,10 @@ const config: Config = {
         teal: "#0F4C5C", // deep teal
       },
       fontFamily: {
-        inter: ["var(--font-inter)"],
+        sans: ["var(--font-manrope)", "sans-serif"],
+        display: ["var(--font-epilogue)", "sans-serif"],
         space: ["var(--font-space-grotesk)"],
         bebas: ["var(--font-bebas)", "sans-serif"],
-        gondens: ["var(--font-big-shoulders)", "sans-serif"],
       },
     },
   },
