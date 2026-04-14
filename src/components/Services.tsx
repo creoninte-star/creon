@@ -21,7 +21,7 @@ export default function Services() {
     <section id="services" className="py-32 bg-background relative z-10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20">
-          <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6">Services</h2>
+          <h2 className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6">Services</h2>
           <div className="w-16 h-[2px] bg-gold"></div>
         </div>
 
@@ -41,7 +41,7 @@ export default function Services() {
                   backgroundColor: typeof window !== "undefined" && window.innerWidth < 768 ? "rgba(255, 255, 255, 0.06)" : "rgba(255, 255, 255, 0.02)"
                 }}
                 viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
                 whileHover={{ scale: 1.02, y: -5 }}
               >
                 {/* Premium subtle inner gradient glow */}
@@ -95,7 +95,7 @@ export default function Services() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-8 uppercase"
+                    className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-8 uppercase"
                   >
                     {activeService?.title}
                   </motion.h2>

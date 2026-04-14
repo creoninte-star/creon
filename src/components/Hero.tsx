@@ -34,7 +34,7 @@ export default function Hero() {
       y: 0,
       opacity: 1,
       rotateX: 0,
-      transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -43,7 +43,7 @@ export default function Hero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -97,7 +97,7 @@ export default function Hero() {
         <div className="overflow-hidden mb-6">
           <motion.h1
             variants={word}
-            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-display font-black tracking-[-0.01em] leading-none"
+            className="text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-gondens font-black tracking-[-0.01em] leading-none"
             style={{
               background:
                 "linear-gradient(160deg, #F5E6A0 0%, #D4AF37 40%, #A07C18 75%, #6B5010 100%)",
@@ -164,7 +164,7 @@ export default function Hero() {
         <motion.div
           className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent"
           animate={{ scaleY: [0, 1, 0], opacity: [0, 1, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
         />
       </motion.div>
 
