@@ -23,7 +23,7 @@ export default function Process() {
       y: 0,
       opacity: 1,
       transition: {
-        y: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+        y: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
         opacity: { duration: 0.6, delay: i * 0.1 },
         borderColor: { delay: i * 1.2, duration: 0.5 },
         boxShadow: { delay: i * 1.2, duration: 0.5 },
@@ -152,5 +152,6 @@ export default function Process() {
     </section>
   );
 }
+
 
 

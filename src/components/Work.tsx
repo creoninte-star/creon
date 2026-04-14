@@ -17,7 +17,7 @@ export default function Work() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6 uppercase">Selected Work</h2>
+            <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight text-text mb-6 uppercase">Selected Work</h2>
             <div className="w-16 h-[2px] bg-gold"></div>
           </div>
           <a href="#" className="uppercase tracking-[0.2em] text-sm font-sans text-gold hover:text-teal transition-colors border-b border-gold hover:border-teal pb-1">
@@ -55,7 +55,7 @@ export default function Work() {
                   <div className="text-gold text-xs font-sans uppercase tracking-[0.2em] mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     {project.category}
                   </div>
-                  <h3 className="text-2xl md:text-4xl font-gondens font-black text-white uppercase tracking-tight">{project.title}</h3>
+                  <h3 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-tight">{project.title}</h3>
                 </div>
               </div>
             </motion.div>
@@ -65,4 +65,5 @@ export default function Work() {
     </section>
   );
 }
+
 
