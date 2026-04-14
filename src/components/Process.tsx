@@ -50,7 +50,7 @@ export default function Process() {
       transition: {
         delay: i * 1.2 + 0.4,
         duration: 0.8,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     })
   };
