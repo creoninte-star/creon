@@ -139,7 +139,7 @@ export default function Hero() {
 
           {/* Secondary — Liquid Glass Silver/White */}
           <LiquidButton
-            onClick={(e) => handleNavClick(e as any, "#store")}
+            onClick={() => window.open("https://shop.creon.agency", "_blank")}
             className="px-12 py-5"
           >
             <span className="font-sans font-bold tracking-[0.2em] uppercase text-sm text-white/80">Visit Store</span>

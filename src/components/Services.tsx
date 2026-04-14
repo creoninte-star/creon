@@ -135,7 +135,7 @@ export default function Services() {
                   transition={{ delay: 0.4 }}
                   className="flex-1 bg-white/[0.03] border border-white/10 p-1 rounded-3xl relative overflow-hidden hidden md:block min-h-[400px]"
                 >
-                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-luminosity"></div>
+                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-60"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
                   <div className="absolute bottom-8 left-8 text-[10px] text-gold tracking-[0.4em] uppercase font-sans">Featured Work / Case Study</div>
                 </motion.div>

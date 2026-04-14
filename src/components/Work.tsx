@@ -49,13 +49,13 @@ export default function Work() {
             >
               {/* Image Base */}
               <div 
-                className="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity group-hover:grayscale-0 group-hover:mix-blend-normal transition-all duration-700 ease-out"
+                className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-out"
                 style={{ backgroundImage: `url(${project.img})` }}
               ></div>
               
               {/* Overlay */}
-              <div className="absolute inset-0 bg-background/75 group-hover:bg-background/10 transition-colors duration-700"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity"></div>
+              <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
               {/* Gold glow on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-gold/0 to-gold/0 group-hover:from-gold/5 group-hover:to-transparent transition-all duration-700 pointer-events-none" />
               

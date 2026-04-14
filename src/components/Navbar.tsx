@@ -10,7 +10,7 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Process", href: "#process" },
   { name: "Work", href: "#work" },
-  { name: "Store", href: "#store" },
+  { name: "Store", href: "https://shop.creon.agency" },
 ];
 
 const navVariants: Variants = {
@@ -43,6 +43,10 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("http")) {
+      if (isOpen) setIsOpen(false);
+      return;
+    }
     e.preventDefault();
     const lenis = (window as any).lenis;
     if (isOpen) setIsOpen(false);
