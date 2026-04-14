@@ -10,59 +10,140 @@ const steps = [
 ];
 
 export default function Process() {
+  const circleVariants = {
+    hidden: { 
+      borderColor: "rgba(255, 255, 255, 0.1)",
+      boxShadow: "0 0 0px rgba(212, 175, 55, 0)",
+      y: 20,
+      opacity: 0
+    },
+    visible: (i: number) => ({
+      borderColor: "rgba(212, 175, 55, 0.5)",
+      boxShadow: "0 0 30px rgba(212, 175, 55, 0.2)",
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.6, delay: i * 0.1 },
+        borderColor: { delay: i * 1.2, duration: 0.5 },
+        boxShadow: { delay: i * 1.2, duration: 0.5 },
+      }
+    })
+  };
+
+  const numVariants = {
+    hidden: { color: "rgba(255, 255, 255, 0.9)" },
+    visible: (i: number) => ({
+      color: "rgba(212, 175, 55, 1)",
+      transition: {
+        delay: i * 1.2,
+        duration: 0.5
+      }
+    })
+  };
+
+  const lineVariants = {
+    hidden: { scaleX: 0, scaleY: 0 },
+    visible: (i: number) => ({
+      scaleX: 1,
+      scaleY: 1,
+      transition: {
+        delay: i * 1.2 + 0.4,
+        duration: 0.8,
+        ease: "easeInOut"
+      }
+    })
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 1.2 + 0.2,
+        duration: 0.6
+      }
+    })
+  };
+
   return (
     <section id="process" className="py-32 bg-background overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-20 text-center">
-          <h2 className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6 uppercase">Our Process</h2>
-          <div className="w-16 h-[2px] bg-gold mx-auto"></div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-7xl font-gondens font-black tracking-tight text-text mb-6 uppercase"
+          >
+            Our Process
+          </motion.h2>
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: 64 }}
+            viewport={{ once: true }}
+            className="h-[2px] bg-gold mx-auto"
+          ></motion.div>
         </div>
 
         <div className="relative mt-24">
-          {/* Main timeline line (Horizontal on Desktop, Vertical on Mobile) */}
-          <div className="hidden md:block absolute top-[4.5rem] left-0 w-full h-[1px] bg-secondary"></div>
-          <div className="md:hidden absolute left-1/2 top-16 bottom-16 w-[2px] bg-secondary -translate-x-1/2"></div>
+          {/* Main timeline line (Static background line) */}
+          <div className="hidden md:block absolute top-[4.5rem] left-0 w-full h-[1px] bg-white/5"></div>
+          <div className="md:hidden absolute left-1/2 top-16 bottom-16 w-[1px] bg-white/5 -translate-x-1/2"></div>
           
           <div className="flex flex-col md:flex-row justify-between relative z-10">
             {steps.map((step, i) => (
               <motion.div 
                 key={step.num} 
-                className="relative flex-1 md:text-center group px-4 mb-16 md:mb-0"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="relative flex-1 md:text-center group px-4 mb-20 md:mb-0"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                custom={i}
               >
-                {/* Connector overlay line animation (Horizontal on Desktop, Vertical on Mobile) */}
+                {/* Connector overlay line animation */}
                 {i < steps.length - 1 && (
                   <>
                     <motion.div 
-                      className="hidden md:block absolute top-[4.5rem] left-1/2 w-full h-[1px] bg-gold origin-left"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
+                      variants={lineVariants}
+                      custom={i}
+                      className="hidden md:block absolute top-[4.5rem] left-1/2 w-full h-[2px] bg-gold origin-left z-0"
                     ></motion.div>
                     <motion.div 
-                      className="md:hidden absolute left-1/2 top-16 w-[2px] h-[calc(100%+4rem)] bg-gold origin-top -translate-x-1/2"
-                      initial={{ scaleY: 0 }}
-                      whileInView={{ scaleY: 1 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 1, delay: i * 0.15 + 0.3, ease: "easeInOut" }}
+                      variants={lineVariants}
+                      custom={i}
+                      className="md:hidden absolute left-1/2 top-32 w-[2px] h-[calc(100%+1rem)] bg-gold origin-top -translate-x-1/2 z-0"
                     ></motion.div>
                   </>
                 )}
 
                 {/* Premium Glass Circle */}
-                <div className="w-32 h-32 md:w-36 md:h-36 mx-auto bg-white/[0.02] backdrop-blur-md rounded-full border border-white/10 flex flex-col items-center justify-center mb-8 relative z-10 transition-all duration-500 group-hover:border-gold/40 group-hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] group-hover:-translate-y-2">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <span className="text-white/90 group-hover:text-gold text-4xl md:text-5xl font-inter font-light tracking-widest transition-colors duration-500 relative z-10">{step.num}</span>
-                </div>
+                <motion.div 
+                  variants={circleVariants}
+                  custom={i}
+                  className="w-32 h-32 md:w-36 md:h-36 mx-auto bg-white/[0.03] backdrop-blur-xl rounded-full border flex flex-col items-center justify-center mb-10 relative z-20"
+                >
+                  <motion.span 
+                    variants={numVariants}
+                    custom={i}
+                    className="text-4xl md:text-5xl font-bebas tracking-widest relative z-10"
+                  >
+                    {step.num}
+                  </motion.span>
+                  
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-0 rounded-full bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </motion.div>
 
-                <h3 className="text-2xl font-gondens font-black mb-4 uppercase text-white tracking-wide group-hover:text-gold transition-colors duration-500">{step.title}</h3>
-                <p className="text-white/70 group-hover:text-white/95 font-inter text-sm md:text-base max-w-[16rem] mx-auto text-left md:text-center leading-relaxed transition-colors duration-500">
-                  {step.desc}
-                </p>
+                <motion.div variants={textVariants} custom={i}>
+                  <h3 className="text-2xl font-bebas mb-4 uppercase text-white tracking-wider group-hover:text-gold transition-colors duration-500">
+                    {step.title}
+                  </h3>
+                  <p className="text-white/60 group-hover:text-white/90 font-inter text-sm md:text-base max-w-[16rem] mx-auto text-left md:text-center leading-relaxed transition-colors duration-500">
+                    {step.desc}
+                  </p>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -71,3 +152,4 @@ export default function Process() {
     </section>
   );
 }
+
